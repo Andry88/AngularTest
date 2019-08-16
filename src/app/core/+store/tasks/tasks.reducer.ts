@@ -1,6 +1,5 @@
 import { TasksActionTypes, TasksActions } from './tasks.actions';
 import { TasksState, initialTasksState } from './tasks.state';
-import { TaskModel } from 'src/app/tasks/models/task.model';
 
 export function tasksReducer(state = initialTasksState, action: TasksActions): TasksState {
   console.log(`Reducer: Action came in! ${action.type}`);
@@ -8,31 +7,7 @@ export function tasksReducer(state = initialTasksState, action: TasksActions): T
   switch (action.type) {
     case TasksActionTypes.GET_TASKS: {
       console.log('GET_TASKS action being handled!');
-      return {
-        ...state,
-        loading: true
-      };
-    }
-
-    case TasksActionTypes.GET_TASKS_SUCCESS: {
-      console.log('GET_TASKS_SUCCESS action being handled!');
-      const data = [...(action.payload as Array<TaskModel>)];
-      return {
-        ...state,
-        data,
-        loading: false,
-        loaded: true
-      };
-    }
-
-    case TasksActionTypes.GET_TASKS_ERROR: {
-      console.log('GET_TASKS_ERROR action being handled!');
-      return {
-        ...state,
-        loading: false,
-        loaded: false,
-        error: action.payload
-      };
+      return {...state};
     }
 
     case TasksActionTypes.CREATE_TASK: {
