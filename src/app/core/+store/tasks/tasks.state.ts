@@ -2,12 +2,14 @@ import { TaskModel } from './../../../tasks/models/task.model';
 
 export interface TasksState {
   data: ReadonlyArray<TaskModel>;
+  readonly loading: boolean;
+  readonly loaded: boolean;
+  readonly error: Error | string;
 }
 
 export const initialTasksState: TasksState = {
-    data: [
-      new TaskModel(1, 'Estimate', 1, 8, 8, true),
-      new TaskModel(2, 'Create', 2, 8, 4, false),
-      new TaskModel(3, 'Deploy', 3, 8, 0, false)
-    ]
+    data: [],
+    loading: false,
+    loaded: false,
+    error: null
 };
